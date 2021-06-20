@@ -1,13 +1,15 @@
 import React from 'react';
+import Midi from '@reactiff/midi';
+import MidiControlledComponent from './MidiControlledComponent';
 
-export type AppProps = {
-    // TODO: define props
-};
+import './css/index.css'
+import './css/orthogonal.css'
+import './css/flex.css'
 
-const App = (props: AppProps) => {
-    return (
-        <div>Example App</div>
-    );
+const App = () => {
+    return <Midi>
+        <MidiControlledComponent />
+    </Midi>
 }
 
 export default App;

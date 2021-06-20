@@ -1,39 +1,8 @@
-# @reactiff/midi
-
-React library for interfacing with MIDI controllers
-
-[![NPM](https://img.shields.io/npm/v/@reactiff/midi.svg)](https://www.npmjs.com/package/@reactiff/midi) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
-
-
-## Install
-
-```bash
-yarn add @reactiff/midi
-```
-
-## Usage
-
-```tsx
-// App.tsx
-import React from 'react'
-import Midi, { midiContext, MidiIndicator } from '@reactiff/midi';
-import { MidiEventTargetConfiguration } from '@reactiff/midi/dist/initialize/processMidiMessage';
-import MyMIDIComponent from './MyMIDIComponent';
-
-const App = () => (
-    <Midi>
-        <MyMIDIComponent />
-        <MidiIndicator />
-    </Midi>
-)
-
-```
-
-```tsx
-// MyMIDIComponent.tsx
 import React, { useCallback, useContext, useEffect, useState, useMemo } from 'react'
 import { midiContext, MidiIndicator } from '@reactiff/midi';
 import { MidiEvent, MidiEventTargetConfiguration } from '@reactiff/midi/dist/initialize/processMidiMessage';
+import Layout from './Layout';
+import PropsTable from './PropsTable';
 import ui from '@reactiff/ui-core';
 
 const config: MidiEventTargetConfiguration = {
@@ -76,7 +45,7 @@ const createEventHandler = (scope: any) => () => {
 };
 
 
-const MyMIDIComponent = (props: any) => {
+const MidiControlledComponent = (props: any) => {
 
     const midi = useContext(midiContext);
     
@@ -101,47 +70,46 @@ const MyMIDIComponent = (props: any) => {
             createEventHandler(scope), []
         ), []
     );
+    
+    const keyCount = Object.keys(touchState).length + Object.keys(paramState).length;
 
-    return [touchState, paramState].map((obj: any) => <PropsTable object={obj} />)
+    return <Layout>
+        {
+            !keyCount && <h3>Touch your MIDI device's mapped controls to see stuff happening...</h3>
+        }
+
+        {
+            keyCount>0 &&
+            [touchState, paramState].map((item: any) => {
+
+                const hasKeys = Object.keys(item).length > 0;
+
+                return <ui.col width={260} fontSize="smaller" border="1px solid #ffffff22"  bgColor="#ffffff11" padding={10} margin={5}>
+                    <h3>{item.handlerName}</h3>
+
+                    {
+                        hasKeys && 
+                        <ui.div marginTop={10}>
+                            <PropsTable object={item} />
+                        </ui.div>
+                        
+                        
+                    }
+                    
+
+                    {
+                        !hasKeys && 
+                        <ui.row justifyCenter alignCenter padding={15}>
+                            <strong>No data yet</strong>
+                        </ui.row>
+                    }
+                    
+                    
+                </ui.col>
+            })
+        }
+    </Layout>
+   
 }
 
-```
-
-## Events
-
-| Event | Description |
-| ----- | ----------- |
-| onTouchStart | Fired when a pad is tapped or a touch starts |
-| onAfterTouch | Fired in rapid succession reflecting changing pressure, when the pad has and is configured to respond to pressure changes.  Check the documentation of your device. |
-| onTouchEnd | Fired when a pad touch ends |
-| onNoteOn | Fired for each piano key pressed.  If a chord of three notes is played, this event is fired three times |
-| onNoteOff | Fired for each piano key released |
-| onParameterChange | Fired as a Rotary Knob is turned.  |
-| onUnknownEvent | This event will be deprecated in the near future.  Do not use in production. |
-
-            
-
-
-
-## Publishing the package to npm
-
-First time (with free account) if scoped, must set access to public
-```bash
-npm publish --access public
-```
-
-To update
-```bash
-npm version major|minor|patch
-```
-
-and then simply
-```bash
-npm publish
-```
-
----
-
-## License
-
-MIT © [Rick Ellis](https://github.com/reactiff)
+export default MidiControlledComponent;
