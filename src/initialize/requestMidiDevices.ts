@@ -7,7 +7,10 @@ export function requestMidiDevices(onStateChange?: Function) {
         if (navi.requestMIDIAccess) {
             navi.requestMIDIAccess().then(
 
+                
                 (midiAccess: any) => {
+
+                    
                     const inputs = midiAccess.inputs.values();
                     const devices: any[] = [];
                     for (let device of inputs) {

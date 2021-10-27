@@ -1,15 +1,13 @@
 import React from 'react';
-import ui from '@reactiff/ui-core';
+import * as ui from '@reactiff/ui-core';
 import OnOffButton from './OnOffButton';
-// import './devices.css';
-// import DeviceSettings from './DeviceSettings';
 import midiContext from '../midiContext';
 import clsx from 'clsx';
 
 type PropsType = { devices: any[] };
 export default (props: PropsType) => {
 
-    const midi = React.useContext(midiContext);
+    // const midi = React.useContext(midiContext);
 
     return <ui.col solid>
         {

@@ -1,26 +1,22 @@
-import React, {useState, useEffect, useRef, useMemo} from 'react';
-import midiContext, { InternalMidiContextInterface, MidiMappedControl } from '../midiContext';
-import ui from '@reactiff/ui-core';
-import { MidiControl } from '../initialize/processMidiMessage';
+import React, { useState, useCallback } from 'react';
+import * as ui from '@reactiff/ui-core';
+import { MidiControl, MidiMappedControl } from '../types';
 import DeviceController from '../initialize/DeviceController';
-import { useCallback } from 'react';
+import { getControlId } from './getControlId';
 
 type Props = {
-    channel: number,
+    channel?: number,
+    // group?: string,
     control: MidiControl,
     controller: DeviceController,
 }
 
-function getControlId(props?: Props) {
-    if (!props) return undefined;
-    const group = props.control.group ? `${props.control.group}-` : '';
-    return `ch${props.channel}-${group}${props.control.type}-${props.control.name}`;
-}
-
 export default (props: Props) => {
 
-    const controlId = getControlId(props);
-    const isActive = () => controlId === getControlId(props.controller.activeMapping);
+    const controlId = getControlId(props.control);
+    const am = props.controller.activeMapping!;
+
+    const isActive = () => !!am && controlId === getControlId(am.control);
     const [revision, setRevision] = useState(0);
     const rerender = useCallback(() => setRevision(r => r + 1), []);
 

@@ -1,0 +1,126 @@
+.beveled {
+  background-color: #ecf0f3;
+  fill: #ecf0f3;
+}
+
+.beveled .text.light{
+  color: #aaa;
+}
+.beveled .text.dark{
+  color: #000;
+}
+.beveled .text.bold{
+  font-weight: bold;
+}
+
+.beveled .surface {
+  
+}
+
+.beveled .surface.border-radius3 { border-radius: 3px; }
+.beveled .surface.border-radius5 { border-radius: 5px; }
+.beveled .surface.border-radius8 { border-radius: 8px; }
+.beveled .surface.border-radius13 { border-radius: 13px; }
+.beveled .surface.border-radius21 { border-radius: 21px; }
+.beveled .surface.border-radius34 { border-radius: 34px; }
+.beveled .surface.border-radius55 { border-radius: 55px; }
+
+.beveled .surface.round {
+  border-radius: 50%;
+}
+
+.beveled .surface.raised { box-shadow: 18px 18px 30px 0px #D1D9E6, -18px -18px 30px 0px #FFFFFF; }
+
+.beveled .surface.sunken {
+  box-shadow: inset 18px 18px 30px 0px #D1D9E6, inset -18px -18px 30px 0px #FFFFFF;
+}
+
+.beveled .surface.raised1 { box-shadow:  1px 1px 2px 0px #D1D9E6, -1px -1px 2px 0px #FFFFFF; }
+.beveled .surface.raised2 { box-shadow:  2px 2px 4px 0px #D1D9E6, -2px -2px 4px 0px #FFFFFF; }
+.beveled .surface.raised3 { box-shadow:  3px 3px 6px 0px #D1D9E6, -3px -3px 6px 0px #FFFFFF; }
+.beveled .surface.raised4 { box-shadow:  4px 4px 8px 0px #D1D9E6, -4px -4px 8px 0px #FFFFFF; }
+.beveled .surface.raised5 { box-shadow:  5px 5px 10px 0px #D1D9E6, -5px -5px 10px 0px #FFFFFF; }
+.beveled .surface.raised6 { box-shadow:  6px 6px 12px 0px #D1D9E6, -6px -6px 12px 0px #FFFFFF; }
+.beveled .surface.raised7 { box-shadow:  7px 7px 14px 0px #D1D9E6, -7px -7px 14px 0px #FFFFFF; }
+.beveled .surface.raised8 { box-shadow:  8px 8px 16px 0px #D1D9E6, -8px -8px 16px 0px #FFFFFF; }
+.beveled .surface.raised9 { box-shadow:  9px 9px 18px 0px #D1D9E6, -9px -9px 18px 0px #FFFFFF; }
+.beveled .surface.raised10 { box-shadow:  10px 10px 20px 0px #D1D9E6, -10px -10px 20px 0px #FFFFFF; }
+.beveled .surface.raised11 { box-shadow:  11px 11px 22px 0px #D1D9E6, -11px -11px 22px 0px #FFFFFF; }
+.beveled .surface.raised12 { box-shadow:  12px 12px 24px 0px #D1D9E6, -12px -12px 24px 0px #FFFFFF; }
+.beveled .surface.raised13 { box-shadow:  13px 13px 26px 0px #D1D9E6, -13px -13px 26px 0px #FFFFFF; }
+.beveled .surface.raised14 { box-shadow:  14px 14px 28px 0px #D1D9E6, -14px -14px 28px 0px #FFFFFF; }
+.beveled .surface.raised15 { box-shadow:  15px 15px 30px 0px #D1D9E6, -15px -15px 30px 0px #FFFFFF; }
+.beveled .surface.raised16 { box-shadow:  16px 16px 32px 0px #D1D9E6, -16px -16px 32px 0px #FFFFFF; }
+.beveled .surface.raised17 { box-shadow:  17px 17px 34px 0px #D1D9E6, -17px -17px 34px 0px #FFFFFF; }
+.beveled .surface.raised18 { box-shadow:  18px 18px 36px 0px #D1D9E6, -18px -18px 36px 0px #FFFFFF; }
+.beveled .surface.raised19 { box-shadow:  19px 19px 38px 0px #D1D9E6, -19px -19px 38px 0px #FFFFFF; }
+.beveled .surface.raised20 { box-shadow:  20px 20px 40px 0px #D1D9E6, -20px -20px 40px 0px #FFFFFF; }
+.beveled .surface.raised21 { box-shadow:  21px 21px 42px 0px #D1D9E6, -21px -21px 42px 0px #FFFFFF; }
+.beveled .surface.raised22 { box-shadow:  22px 22px 44px 0px #D1D9E6, -22px -22px 44px 0px #FFFFFF; }
+.beveled .surface.raised23 { box-shadow:  23px 23px 46px 0px #D1D9E6, -23px -23px 46px 0px #FFFFFF; }
+.beveled .surface.raised24 { box-shadow:  24px 24px 48px 0px #D1D9E6, -24px -24px 48px 0px #FFFFFF; }
+.beveled .surface.raised25 { box-shadow:  25px 25px 50px 0px #D1D9E6, -25px -25px 50px 0px #FFFFFF; }
+.beveled .surface.raised26 { box-shadow:  26px 26px 52px 0px #D1D9E6, -26px -26px 52px 0px #FFFFFF; }
+.beveled .surface.raised27 { box-shadow:  27px 27px 54px 0px #D1D9E6, -27px -27px 54px 0px #FFFFFF; }
+.beveled .surface.raised28 { box-shadow:  28px 28px 56px 0px #D1D9E6, -28px -28px 56px 0px #FFFFFF; }
+.beveled .surface.raised29 { box-shadow:  29px 29px 58px 0px #D1D9E6, -29px -29px 58px 0px #FFFFFF; }
+.beveled .surface.raised30 { box-shadow:  30px 30px 60px 0px #D1D9E6, -30px -30px 60px 0px #FFFFFF; }
+
+.beveled .surface.sunken1 { box-shadow:  inset 1px 1px 1px 0px #D1D9E6, inset -1px -1px 1px 0px #FFFFFF; }
+.beveled .surface.sunken2 { box-shadow:  inset 2px 2px 2px 0px #D1D9E6, inset -2px -2px 2px 0px #FFFFFF; }
+.beveled .surface.sunken3 { box-shadow:  inset 3px 3px 3px 0px #D1D9E6, inset -3px -3px 3px 0px #FFFFFF; }
+.beveled .surface.sunken4 { box-shadow:  inset 4px 4px 4px 0px #D1D9E6, inset -4px -4px 4px 0px #FFFFFF; }
+.beveled .surface.sunken5 { box-shadow:  inset 5px 5px 5px 0px #D1D9E6, inset -5px -5px 5px 0px #FFFFFF; }
+.beveled .surface.sunken6 { box-shadow:  inset 6px 6px 6px 0px #D1D9E6, inset -6px -6px 6px 0px #FFFFFF; }
+.beveled .surface.sunken7 { box-shadow:  inset 7px 7px 7px 0px #D1D9E6, inset -7px -7px 7px 0px #FFFFFF; }
+.beveled .surface.sunken8 { box-shadow:  inset 8px 8px 8px 0px #D1D9E6, inset -8px -8px 8px 0px #FFFFFF; }
+.beveled .surface.sunken9 { box-shadow:  inset 9px 9px 9px 0px #D1D9E6, inset -9px -9px 9px 0px #FFFFFF; }
+.beveled .surface.sunken10 { box-shadow:  inset 10px 10px 10px 0px #D1D9E6, inset -10px -10px 10px 0px #FFFFFF; }
+.beveled .surface.sunken11 { box-shadow:  inset 11px 11px 22px 0px #D1D9E6, inset -11px -11px 22px 0px #FFFFFF; }
+.beveled .surface.sunken12 { box-shadow:  inset 12px 12px 24px 0px #D1D9E6, inset -12px -12px 24px 0px #FFFFFF; }
+.beveled .surface.sunken13 { box-shadow:  inset 13px 13px 26px 0px #D1D9E6, inset -13px -13px 26px 0px #FFFFFF; }
+.beveled .surface.sunken14 { box-shadow:  inset 14px 14px 28px 0px #D1D9E6, inset -14px -14px 28px 0px #FFFFFF; }
+.beveled .surface.sunken15 { box-shadow:  inset 15px 15px 30px 0px #D1D9E6, inset -15px -15px 30px 0px #FFFFFF; }
+.beveled .surface.sunken16 { box-shadow:  inset 16px 16px 32px 0px #D1D9E6, inset -16px -16px 32px 0px #FFFFFF; }
+.beveled .surface.sunken17 { box-shadow:  inset 17px 17px 34px 0px #D1D9E6, inset -17px -17px 34px 0px #FFFFFF; }
+.beveled .surface.sunken18 { box-shadow:  inset 18px 18px 36px 0px #D1D9E6, inset -18px -18px 36px 0px #FFFFFF; }
+.beveled .surface.sunken19 { box-shadow:  inset 19px 19px 38px 0px #D1D9E6, inset -19px -19px 38px 0px #FFFFFF; }
+.beveled .surface.sunken20 { box-shadow:  inset 20px 20px 40px 0px #D1D9E6, inset -20px -20px 40px 0px #FFFFFF; }
+.beveled .surface.sunken21 { box-shadow:  inset 21px 21px 42px 0px #D1D9E6, inset -21px -21px 42px 0px #FFFFFF; }
+.beveled .surface.sunken22 { box-shadow:  inset 22px 22px 44px 0px #D1D9E6, inset -22px -22px 44px 0px #FFFFFF; }
+.beveled .surface.sunken23 { box-shadow:  inset 23px 23px 46px 0px #D1D9E6, inset -23px -23px 46px 0px #FFFFFF; }
+.beveled .surface.sunken24 { box-shadow:  inset 24px 24px 48px 0px #D1D9E6, inset -24px -24px 48px 0px #FFFFFF; }
+.beveled .surface.sunken25 { box-shadow:  inset 25px 25px 50px 0px #D1D9E6, inset -25px -25px 50px 0px #FFFFFF; }
+.beveled .surface.sunken26 { box-shadow:  inset 26px 26px 52px 0px #D1D9E6, inset -26px -26px 52px 0px #FFFFFF; }
+.beveled .surface.sunken27 { box-shadow:  inset 27px 27px 54px 0px #D1D9E6, inset -27px -27px 54px 0px #FFFFFF; }
+.beveled .surface.sunken28 { box-shadow:  inset 28px 28px 56px 0px #D1D9E6, inset -28px -28px 56px 0px #FFFFFF; }
+.beveled .surface.sunken29 { box-shadow:  inset 29px 29px 58px 0px #D1D9E6, inset -29px -29px 58px 0px #FFFFFF; }
+.beveled .surface.sunken30 { box-shadow:  inset 30px 30px 60px 0px #D1D9E6, inset -30px -30px 60px 0px #FFFFFF; }
+
+.beveled .metric {
+  font-weight: bold;
+}
+.beveled .label {
+  font-weight: 300;
+  color: #555;
+} 
+
+
+.beveled .metric.rel-size-xs {
+  font-size: 1vw;
+}
+.beveled .metric.rel-size-sm {
+  font-size: 1.5vw;
+}
+.beveled .metric.rel-size-md {
+  font-size: 2vw;
+}
+.beveled .metric.rel-size-lg {
+  font-size: 3vw;
+}
+.beveled .metric.rel-size-xl {
+  font-size: 4vw;
+}
+.beveled .metric.rel-size-xxl {
+  font-size: 5vw;
+}

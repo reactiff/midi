@@ -4,8 +4,9 @@ React library for interfacing with MIDI controllers
 
 [![NPM](https://img.shields.io/npm/v/@reactiff/midi.svg)](https://www.npmjs.com/package/@reactiff/midi) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-
 ## Install
+
+Big news!  Version 2.0 now supports ColorPaletteEditor!
 
 ```bash
 yarn add @reactiff/midi
@@ -14,97 +15,60 @@ yarn add @reactiff/midi
 ## Usage
 
 ```tsx
-// App.tsx
-import React from 'react'
-import Midi, { midiContext, MidiIndicator } from '@reactiff/midi';
-import { MidiEventTargetConfiguration } from '@reactiff/midi/dist/initialize/processMidiMessage';
-import MyMIDIComponent from './MyMIDIComponent';
+import { useState } from 'react'
+import * as ui from '@reactiff/ui-core'
+import { MidiColorPaletteEditor } from '@reactiff/midi'
+import { MidiProvider } from '@reactiff/midi'
 
-const App = () => (
-    <Midi>
-        <MyMIDIComponent />
-        <MidiIndicator />
-    </Midi>
-)
+export default const DetachablePaletteEditor = () => {
 
+  const [palette, setPalette] = useState<any>({
+    primaryColor: 'royalblue',
+    secondaryColor: 'pink',
+    danger: 'red',
+  })
+
+  const handleChange = (p: any) => {
+    setPalette(p)
+  }
+
+  return (
+    <MidiProvider>
+      <ui.row>
+        <ui.col>
+          <HotPreview palette={palette} />
+        </ui.col>
+        <ui.col>
+          <MidiColorPaletteEditor
+            id="demo-detachable-color-palette-editor-with-midi-fast-refresh-and-auto-save"
+            palette={palette}
+            onChange={setPalette}
+            detachable={true}
+          />
+        </ui.col>
+      </ui.row>
+    </MidiProvider>
+  )
+}
 ```
 
+You can supply your own Preview, which used the palette, or update the whote Theme to see changes everywhere!
 ```tsx
-// MyMIDIComponent.tsx
-import React, { useCallback, useContext, useEffect, useState, useMemo } from 'react'
-import { midiContext, MidiIndicator } from '@reactiff/midi';
-import { MidiEvent, MidiEventTargetConfiguration } from '@reactiff/midi/dist/initialize/processMidiMessage';
-import ui from '@reactiff/ui-core';
-
-const config: MidiEventTargetConfiguration = {
-    layout: "horizontal",
-    channels: 7,
-    channelControls: [
-        { type: 'selector', name: 'size' },
-        { type: 'selector', name: 'step' },
-        { type: 'pad', name: 'up' },
-        { type: 'pad', name: 'down' },
-    ],
-    globalGroups: [[
-        { type: 'selector', name: 'x' },
-        { type: 'selector', name: 'y' },
-        { type: 'pad', name: 'enter' },
-        { type: 'pad', name: 'exit' },
-    ]],
-    revision: 1,
-};
-
-const createEventHandler = (scope: any) => () => {
-       
-    const onTouchStart      = (e: MidiEvent) => scope.setTouchState({...e});
-    const onAfterTouch      = (e: MidiEvent) => scope.setTouchState({...e});
-    const onTouchEnd        = (e: MidiEvent) => scope.setTouchState({...e});
-    const onParameterChange = (e: MidiEvent) => scope.updateParamState({...e});
-
-    const target = {
-        id: 'MidiControlledComponent',
-        config,
-        onTouchStart,
-        onAfterTouch,
-        onTouchEnd,
-        onParameterChange
-    };
-
-    scope.midi.register(target);
-
-    return () => scope.midi.unregister(target);
-};
-
-
-const MyMIDIComponent = (props: any) => {
-
-    const midi = useContext(midiContext);
-    
-    const [touchState, setTouchState] = useState<any>({});
-    const [paramState, setParamState] = useState<any>({});
-    
-    const updateTouchState = useCallback((newState: any) => setTouchState(newState), []);
-    const updateParamState = useCallback((newState: any) => setParamState(newState), []);
-
-    const scope = {
-        midi,
-        touchState,
-        paramState,
-        setTouchState,
-        setParamState,
-        updateTouchState,
-        updateParamState,
-    };
-
-    useEffect(
-        useMemo(() => 
-            createEventHandler(scope), []
-        ), []
-    );
-
-    return [touchState, paramState].map((obj: any) => <PropsTable object={obj} />)
+const HotPreview = (props: any) => {
+  const { palette } = props
+  return (
+    <ui.col>
+      <ui.div>Header</ui.div>
+      <ui.div>
+        <p>{ui.loremIpsum.paragraphs(1)}</p>
+      </ui.div>
+      <ui.div>
+        <button>Primary</button>
+        <button>Secondary</button>
+      </ui.div>
+    </ui.col>
+  )
 }
-
 ```
 
 ## Events

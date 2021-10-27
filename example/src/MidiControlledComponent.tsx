@@ -1,13 +1,15 @@
 import React, { useCallback, useContext, useEffect, useState, useMemo } from 'react'
 import { midiContext, MidiIndicator } from '@reactiff/midi';
-import { MidiEvent, MidiEventTargetConfiguration } from '@reactiff/midi/dist/initialize/processMidiMessage';
+
 import Layout from './Layout';
 import PropsTable from './PropsTable';
-import ui from '@reactiff/ui-core';
+import * as ui from '@reactiff/ui-core';
+import { MidiEvent, MidiEventTargetConfiguration } from '@reactiff/midi/dist/types';
 
 const config: MidiEventTargetConfiguration = {
     layout: "horizontal",
     channels: 7,
+    // flowDirection: 'inverted',
     channelControls: [
         { type: 'selector', name: 'size' },
         { type: 'selector', name: 'step' },
@@ -74,17 +76,24 @@ const MidiControlledComponent = (props: any) => {
     const keyCount = Object.keys(touchState).length + Object.keys(paramState).length;
 
     return <Layout>
+        
+        
+
+            <ui.row padding={5}>
+                <ui.div grow />
+                <MidiIndicator />
+            </ui.row>
         {
             !keyCount && <h3>Touch your MIDI device's mapped controls to see stuff happening...</h3>
         }
 
         {
-            keyCount>0 &&
-            [touchState, paramState].map((item: any) => {
+            
+            [touchState, paramState].map((item: any, i) => {
 
                 const hasKeys = Object.keys(item).length > 0;
 
-                return <ui.col width={260} fontSize="smaller" border="1px solid #ffffff22"  bgColor="#ffffff11" padding={10} margin={5}>
+                return <ui.col key={i} width={260} fontSize="smaller" border="1px solid #ffffff22"  bgColor="#ffffff11" padding={10} margin={5}>
                     <h3>{item.handlerName}</h3>
 
                     {
@@ -108,6 +117,8 @@ const MidiControlledComponent = (props: any) => {
                 </ui.col>
             })
         }
+        
+        
     </Layout>
    
 }

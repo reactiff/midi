@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef, useMemo, ReactNode } from 'react'
-import midiContext, { InternalMidiContextInterface, MidiMappedControl } from './midiContext'
+import midiContext from './midiContext'
 import { initialize } from './initialize'
 import DeviceController from './initialize/DeviceController'
-import { MidiEventTarget } from './initialize/processMidiMessage'
 import Settings from './Settings';
+import { InternalMidiContextInterface, MidiEventTarget } from './types';
 
 //////////////////////////////////////////////////////////////////////// MIDI
 
@@ -12,10 +12,10 @@ type MutableState = {
   targetStack: MidiEventTarget[]
 }
 
-export type MidiProps = {
-  children?: ReactNode
+type Props = {
+  children: ReactNode
 }
-export default (props: MidiProps) => {
+const MidiProvider = (props: Props) => {
 
   const [controllers, setControllers]     = useState<DeviceController[]>([]);
   const [settingsOpen, setSettingsOpen]   = useState(false);
@@ -32,7 +32,6 @@ export default (props: MidiProps) => {
     cc.forEach(c => c.bindEventTarget(_t));
   } 
 
-
   const context: InternalMidiContextInterface = {
 
     settingsOpen,
@@ -42,6 +41,7 @@ export default (props: MidiProps) => {
 
     controllers,
     setControllers: (ctrls) => {
+
       bindEventTargets(ctrls);
       setControllers(ctrls);
     },
@@ -53,12 +53,16 @@ export default (props: MidiProps) => {
 
     // PUBLIC INTERFACE
     register(target: MidiEventTarget) {
+
       if (mutable.targetMap[target.id]) {
         throw new Error('Target already registered')
       }
+
       mutable.targetStack.push(target)
       mutable.targetMap[target.id] = target
+
       bindEventTargets(controllers, target);
+
       return () => {
         context.unregister(target);
       };
@@ -91,3 +95,5 @@ export default (props: MidiProps) => {
     </midiContext.Provider>
   )
 }
+
+export default MidiProvider;

@@ -1,7 +1,8 @@
 import { v4 as uuid } from 'uuid';
-import { MidiMappedControl } from '../midiContext';
-import { MidiControl, MidiEventTarget, processMidiMessage } from './processMidiMessage';
+import { processMidiMessage } from './processMidiMessage';
 import _ from 'lodash';
+import { MidiControl, MidiEventTarget, MidiMappedControl } from '../types';
+import { getControlId } from '../Settings/getControlId';
 
 function createMap() {
   return { fromMidi: {}, fromControl: {} };
@@ -32,11 +33,6 @@ function saveMappings(controller: DeviceController, eventTarget: MidiEventTarget
   localStorage.setItem(key, JSON.stringify(controller.midiMap));
 }
 
-function getControlId(props: MidiMappedControl) {
-  const group = props.control.group ? `${props.control.group}-` : '';
-  return `ch${props.channel}-${group}${props.control.type}-${props.control.name}`;
-}
-
 export default class DeviceController {
   id: string;
   deviceId: string;
@@ -54,6 +50,7 @@ export default class DeviceController {
   constructor(device: any, midiContext: any) {
     // TODO DEVICE ID IS ONLY IMPORTANT WHEN THERE ARE TWO OR MORE DEVICES WITH SAME NAME
     // THIS NEEDS TO BE TESTED AND SOLVED
+
     const name = device.name.toLowerCase().replace(/\s/g, '-');
     this.deviceId = `${name}`; //-${device.id}`;  
     this.midiContext = midiContext;
@@ -76,6 +73,7 @@ export default class DeviceController {
     this.activeMapping.rerender();
     rerender();
   }
+
   cancelMapping() {
     const rerender = this.activeMapping ? this.activeMapping.rerender : () => {};
     this.activeMapping = undefined;
@@ -84,15 +82,20 @@ export default class DeviceController {
 
   finalizeMapping(message: number[]) {
     
-    const channel = this.activeMapping!.channel;
-    const { type, name, group } = this.activeMapping!.control!;
+    const am = this.activeMapping!;
+
+    const channel = am.control.channel;
+    const number = am.control.number;
+
+    const { group, type, name } = am.control;
+
     const [ command, note ] = message;
 
     // 1st mapping: command-note -> channel-type-name
-    this.midiMap.fromMidi[`${command}-${note}`] = { channel, type, name, group };
+    this.midiMap.fromMidi[`${command}-${note}`] = { type, name, number, channel, group };
 
     // 2st mapping: channel-type-name -> command-note
-    const controlId = getControlId(this.activeMapping!);
+    const controlId = getControlId(am.control);
     this.midiMap.fromControl[controlId] = { command, note };
 
     saveMappings(this, this.eventTarget!);
@@ -118,6 +121,7 @@ export default class DeviceController {
   }
   
   onMIDIMessage(message: any) {
+    
     if (!this.eventTarget) return;
     if (!this.enabled) return;
     if (this.activeMapping) return this.finalizeMapping(message.data);

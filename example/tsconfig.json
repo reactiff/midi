@@ -30,7 +30,7 @@
   },
   "include": [
     "src"
-  ],
+, "../src/ColorDesigner"  ],
   "exclude": [
     "node_modules",
     "build"

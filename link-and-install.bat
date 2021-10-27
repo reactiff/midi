@@ -1,3 +1,10 @@
+cd example
+call yarn unlink "@reactiff/midi"
+cd..
+call yarn unlink
+
+
+
 call yarn link
 call yarn install
 
