@@ -1,6 +1,6 @@
 {
   "name": "@reactiff/midi",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "React library for interfacing with MIDI controllers",
   "author": "Rick Ellis",
   "license": "MIT",
