@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect } from 'react'
+import React from 'react'
 import midiContext from '../midiContext'
-import * as ui from '@reactiff/ui-core'
+import * as ui from '../ui'
 
 import MIDIPad from './MIDIPad'
 import MIDISelector from './MIDISelector'
@@ -14,10 +14,10 @@ const MidiSettings = (props: any) => {
   const midi: any = React.useContext(midiContext)
    
   // CALLBACKS //
-  const quitNow = useCallback(() => midi.toggleSettings(false), [])
-  const onEscapeKey = useCallback((e) => e.keyCode === 27 && quitNow(), [])
+  const quitNow = React.useCallback(() => midi.toggleSettings(false), [])
+  const onEscapeKey = React.useCallback((e) => e.keyCode === 27 && quitNow(), [])
 
-  useEffect(() => { // Handle Esc key
+  React.useEffect(() => { // Handle Esc key
     document.addEventListener('keydown', onEscapeKey, false)
     return () => document.removeEventListener('keydown', onEscapeKey, false)
   }, [])

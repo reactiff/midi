@@ -1,5 +1,5 @@
 import React from 'react'
-import * as ui from '@reactiff/ui-core';
+import * as ui from './ui';
 
 /////////////////////////////////////////////////////////////////////// EXAMPLE - LAYOUT
 

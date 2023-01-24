@@ -1,5 +1,5 @@
-import React, { useCallback, useState } from 'react';
-import * as ui from '@reactiff/ui-core';
+import React from 'react';
+import * as ui from '../ui';
 import DeviceController from '../initialize/DeviceController';
 import { MidiControl, MidiMappedControl } from '../types';
 import { getControlId } from './getControlId';
@@ -19,8 +19,8 @@ function MIDIPad(props: Props) {
     const am = props.controller.activeMapping!;
     const isActive = () => !!am && controlId === getControlId(am && am.control);
 
-    const [revision, setRevision] = useState(0);
-    const rerender = useCallback(() => setRevision(r => r + 1), []);
+    const [revision, setRevision] = React.useState(0);
+    const rerender = React.useCallback(() => setRevision(r => r + 1), []);
 
     const mappedControl: MidiMappedControl = { 
         ...props,
@@ -44,7 +44,6 @@ function MIDIPad(props: Props) {
 
     // Is it Active now?
     const active = isActive();
-
 
     const cssBase: any = {
         width: 60,
@@ -71,8 +70,8 @@ function MIDIPad(props: Props) {
 
     return (
         <ui.col alignCenter>
-            <ui.div className="center-xy" css={cssBase} onClick={handleClick}>
-                <ui.div css={cssKnob} className="center-xy">
+            <ui.div className="center-xy" style={cssBase} onClick={handleClick}>
+                <ui.div style={cssKnob} className="center-xy">
                     <span>{props.control.name}</span>
                 </ui.div>
             </ui.div>

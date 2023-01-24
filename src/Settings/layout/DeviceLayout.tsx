@@ -1,6 +1,6 @@
-import React, { createElement } from 'react'
+import React from 'react'
 import midiContext from '../../midiContext'
-import * as ui from '@reactiff/ui-core'
+import * as ui from '../../ui'
 import MIDIPad from '../MIDIPad'
 import MIDISelector from '../MIDISelector'
 import { InternalMidiContextInterface } from '../../types'
@@ -19,31 +19,17 @@ const DeviceLayout = (props: Props) => {
   const layout = config.layout || 'horizontal';
   const inverted = config.flowDirection === 'inverted';
 
-  // const horizontalInverted = layout === 'horizontal' && config.flowDirection === 'inverted'
-  // const verticalInverted = layout === 'vertical' && config.flowDirection === 'inverted'
-
   if (inverted) {
     if (config.channelControls) config.channelControls.reverse()
     if (config.globalGroups) config.globalGroups.forEach((g) => g.reverse())
   }
-
-  // if (horizontalInverted) {
-  //   if (config.channelControls) config.channelControls.reverse()
-  //   if (config.globalGroups) config.globalGroups.forEach((g) => g.reverse())
-  // }
-
-  // if (verticalInverted) {
-  //   if (config.channelControls) config.channelControls.reverse()
-  //   if (config.globalGroups) config.globalGroups.forEach((g) => g.reverse())
-  // }
-
 
   return <React.Fragment>
     {
       layout === 'horizontal' && <HorizontalStack controller={props.controller} /> 
     }
     {
-      layout === 'vertical' && createElement('VerticalStack', props) 
+      layout === 'vertical' && React.createElement('VerticalStack', props) 
     }
   </React.Fragment>;
 }

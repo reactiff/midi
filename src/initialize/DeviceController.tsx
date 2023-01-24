@@ -1,4 +1,3 @@
-import { v4 as uuid } from 'uuid';
 import { processMidiMessage } from './processMidiMessage';
 import _ from 'lodash';
 import { MidiControl, MidiEventTarget, MidiMappedControl } from '../types';
@@ -54,7 +53,7 @@ export default class DeviceController {
     const name = device.name.toLowerCase().replace(/\s/g, '-');
     this.deviceId = `${name}`; //-${device.id}`;  
     this.midiContext = midiContext;
-    this.id = uuid();
+    this.id = _.uniqueId();
     device.controllerId  = this.id;
     device.onmidimessage = this.onMIDIMessage.bind(this); 
     this.device = device;

@@ -1,5 +1,5 @@
-import React, { useEffect, ReactNode } from 'react';
-import * as ui from '@reactiff/ui-core';
+import React from 'react';
+import * as ui from '../ui';
 // import './css/onoffbutton.css';
 
 type OnOffButtonProps = {
@@ -7,7 +7,7 @@ type OnOffButtonProps = {
     value?: boolean,
     defaultValue?: boolean,
     onChange: (enabled: boolean) => void,
-    element: (enabled: boolean) => ReactNode,
+    element: (enabled: boolean) => React.ReactNode,
 }
 
 const STORAGE_PREFIX = 'on-off-';
@@ -23,7 +23,7 @@ const OnOffButton = (props: OnOffButtonProps) => {
         return initial;
     });
     
-    useEffect(() => {
+    React.useEffect(() => {
         props.onChange(enabled);
     }, [enabled, props.id]);
 

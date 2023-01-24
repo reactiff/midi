@@ -1,6 +1,5 @@
 import React from 'react'
-import midiContext from '../../midiContext'
-import * as ui from '@reactiff/ui-core'
+import * as ui from '../../ui'
 import MIDIPad from '../MIDIPad'
 import MIDISelector from '../MIDISelector'
 
@@ -43,7 +42,7 @@ const HorizontalNamedControlGroups = (props: any) => {
 
               return <ui.col key={i}>
 
-                <ui.div css={captionStyle} >
+                <ui.div style={captionStyle} >
                   {caption}
                 </ui.div>
 

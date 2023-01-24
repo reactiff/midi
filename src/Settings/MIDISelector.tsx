@@ -1,5 +1,5 @@
-import React, { useState, useCallback } from 'react';
-import * as ui from '@reactiff/ui-core';
+import React from 'react';
+import * as ui from '../ui';
 import { MidiControl, MidiMappedControl } from '../types';
 import DeviceController from '../initialize/DeviceController';
 import { getControlId } from './getControlId';
@@ -17,8 +17,8 @@ export default (props: Props) => {
     const am = props.controller.activeMapping!;
 
     const isActive = () => !!am && controlId === getControlId(am.control);
-    const [revision, setRevision] = useState(0);
-    const rerender = useCallback(() => setRevision(r => r + 1), []);
+    const [revision, setRevision] = React.useState(0);
+    const rerender = React.useCallback(() => setRevision(r => r + 1), []);
 
     const mappedControl: MidiMappedControl = { 
         ...props,
@@ -45,7 +45,6 @@ export default (props: Props) => {
 
     // STYLES //
 
-    // TODO transfer styles from .css file:
     const cssBase: any = {
         width: 60,
         height: 60,
@@ -71,8 +70,8 @@ export default (props: Props) => {
 
     return (
         <ui.col alignCenter>
-            <ui.div className="center-xy" css={cssBase} onClick={handleClick}>
-                <ui.div css={cssKnob} className="center-xy">
+            <ui.div className="center-xy" style={cssBase} onClick={handleClick}>
+                <ui.div style={cssKnob} className="center-xy">
                     <span>{props.control.name}</span>
                 </ui.div>
             </ui.div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useMemo, ReactNode } from 'react'
+import React from 'react'
 import midiContext from './midiContext'
 import { initialize } from './initialize'
 import DeviceController from './initialize/DeviceController'
@@ -13,14 +13,14 @@ type MutableState = {
 }
 
 type Props = {
-  children: ReactNode
+  children: React.ReactNode
 }
 const MidiProvider = (props: Props) => {
 
-  const [controllers, setControllers]     = useState<DeviceController[]>([]);
-  const [settingsOpen, setSettingsOpen]   = useState(false);
+  const [controllers, setControllers]     = React.useState<DeviceController[]>([]);
+  const [settingsOpen, setSettingsOpen]   = React.useState(false);
   
-  const mutable = useRef<MutableState>({
+  const mutable = React.useRef<MutableState>({
     targetMap: {},
     targetStack: []
   }).current
@@ -81,7 +81,7 @@ const MidiProvider = (props: Props) => {
 
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     initialize(context)
     return () => {
       controllers.forEach((d: any) => d.disconnect())

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { midiContext, MidiIndicator } from '@reactiff/midi';
 import { MidiEventTarget } from '@reactiff/midi/dist/types';
-import * as ui from '@reactiff/ui-core';
+import * as ui from './ui';
 
 function parseProperties(object: any) {
     const properties = Object.entries(object).map(([key, value]) => {

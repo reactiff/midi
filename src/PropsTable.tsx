@@ -1,5 +1,5 @@
 import React from 'react'
-import * as ui from '@reactiff/ui-core';
+import * as ui from './ui';
 
 function parseProperties(object: any) {
     const properties = Object.entries(object).map(([key, value]) => {
@@ -27,9 +27,7 @@ function parseProperties(object: any) {
 }
 
 const PropsTable = (props: any) => {
-    // const properties = Object.entries(props.object).map(([key, value]) => ({key, value} as any));
     const properties = parseProperties(props.object);
-    
     return <React.Fragment>
         {
             properties.map((p, i) => {

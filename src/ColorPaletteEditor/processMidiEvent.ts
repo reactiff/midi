@@ -1,5 +1,4 @@
 import { MidiEvent } from '../types';
-import * as ui from '@reactiff/ui-core';
 import { MIDIColorManagerState } from './midiManager';
 import { ColorInputs, MIDIColor } from './types';
 import W3Color from './w3color';

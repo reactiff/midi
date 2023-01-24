@@ -1,14 +1,10 @@
 import React from 'react';
-import * as ui from '@reactiff/ui-core';
+import * as ui from '../ui';
 import OnOffButton from './OnOffButton';
-import midiContext from '../midiContext';
 import clsx from 'clsx';
 
 type PropsType = { devices: any[] };
 export default (props: PropsType) => {
-
-    // const midi = React.useContext(midiContext);
-
     return <ui.col solid>
         {
             (!props.devices || props.devices.length === 0) &&
@@ -29,14 +25,11 @@ export default (props: PropsType) => {
                                     <ui.div grow>
                                         {d.name}
                                     </ui.div>
-                                    {/* <DeviceSettings device={d} /> */}
                                 </ui.row>
                                 <ui.div>
                                     <OnOffButton element={on => on ? 'ON' : 'OFF'} defaultValue onChange={en => d.enable(en)} />
                                 </ui.div>
                             </ui.col>
-                            
-                            
                         </ui.row>
                     })
                 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import * as ui from '@reactiff/ui-core';
+import * as ui from '../ui';
 import { MIDIColorPalette } from './types';
 import W3Color from './w3color';
 
@@ -33,7 +33,7 @@ const ColorSwatch = (props: any) => {
         backgroundColor: color instanceof W3Color ? color.toHexString() : color,
     };
 
-    return <ui.row css={style} onClick={() => {
+    return <ui.row style={style} onClick={() => {
         props.onClick && props.onClick()
     }}>
         { displayName }

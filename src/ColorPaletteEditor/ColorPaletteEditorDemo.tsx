@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ColorPaletteEditor from '.';
 import { MIDIColorPalette } from './types';
 
-import * as ui from '@reactiff/ui-core';
+import * as ui from '../ui';
 
 const ColorPaletteEditorDemo = () => {
     
-    const [palette, setPalette] = useState<MIDIColorPalette>({
+    const [palette, setPalette] = React.useState<MIDIColorPalette>({
         primaryColor: 'royalblue',
         secondaryColor: 'pink',
         danger: 'red',
@@ -37,7 +37,7 @@ const DesignPreview = (props: any) => {
 
             <ui.div>
                 <p>
-                    {ui.loremIpsum.paragraphs(1)}
+                    Wah wah wah
                 </p>
             </ui.div>
 
